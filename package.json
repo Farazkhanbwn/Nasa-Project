@@ -4,6 +4,9 @@
   "description": "This project is developed as part of the Zero to Mastery (ZTM) course, utilizing Node.js and Express.js to create a web server that interacts with NASA's APIs.",
   "main": "index.js",
   "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm-run-all --parallel install-server install-client",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
     "watch": "npm-run-all --parallel server client",
