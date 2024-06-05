@@ -5,7 +5,7 @@ const { loadPlanetsData } = require("./models/planets.model");
 const PORT = process.env.PORT ?? 8000;
 const server = http.createServer(app);
 
-app.use("/", (_, res) => {
+app.use("/", (req, res) => {
   res.send("<h3>Hello We are Learning...</h3>");
 });
 
