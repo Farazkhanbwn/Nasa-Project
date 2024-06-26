@@ -1,4 +1,5 @@
 require("dotenv").config();
+console.log("Environment Variables:", process.env.PORT, process.env.MONGO_URL);
 const http = require("http");
 const app = require("./app");
 const { loadPlanetsData } = require("./models/planets.model");
@@ -31,10 +32,7 @@ mongoose.connection.on("error", (error) => {
 
 const startServer = async () => {
   try {
-    await mongoose.connect(MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URL);
     console.log("Connected to MongoDB");
     await loadPlanetsData();
     server.listen(PORT, () => {
