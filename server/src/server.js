@@ -5,11 +5,9 @@ const app = require("./app");
 const { loadPlanetsData } = require("./models/planets.model");
 const mongoose = require("mongoose");
 
-const PORT = process.env.PORT ?? 4000;
+const PORT = process.env.PORT ?? 8000;
 const MONGO_URL = process.env.MONGO_URL ?? "mongodb://localhost:27017/nasa-api";
 const server = http.createServer(app);
-
-console.log("Port no is : ", PORT, "Mongo URL is : ", MONGO_URL);
 
 app.use("/", (req, res) => {
   res.send("<h3>Hello We are Learning...</h3>");
