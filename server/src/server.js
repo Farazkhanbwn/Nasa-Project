@@ -3,10 +3,9 @@ console.log("Environment Variables:", process.env.PORT, process.env.MONGO_URL);
 const http = require("http");
 const app = require("./app");
 const { loadPlanetsData } = require("./models/planets.model");
-const mongoose = require("mongoose");
+const { mongoConnect } = require("./utils/mongo");
 
 const PORT = process.env.PORT ?? 8000;
-const MONGO_URL = process.env.MONGO_URL ?? "mongodb://localhost:27017/nasa-api";
 const server = http.createServer(app);
 
 app.use("/", (req, res) => {
@@ -19,19 +18,9 @@ process.on("SIGTERM", () => {
   });
 });
 
-mongoose.connection.once("open", () => {
-  console.log("MongoDB connection ready");
-});
-
-mongoose.connection.on("error", (error) => {
-  // Changed from .once to .on for error handling
-  console.error("Error value is: ", error);
-});
-
 const startServer = async () => {
   try {
-    await mongoose.connect(MONGO_URL);
-    console.log("Connected to MongoDB");
+    await mongoConnect();
     await loadPlanetsData();
     server.listen(PORT, () => {
       console.log("Server is running on:", PORT);

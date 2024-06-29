@@ -1,6 +1,8 @@
 const request = require("supertest");
 const app = require("../../app");
 
+jest.setTimeout(10000);
+
 describe("Get All Planets", () => {
   test("Response with status code 200", async () => {
     const response = await request(app).get("/planets").expect(200);
