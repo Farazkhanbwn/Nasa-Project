@@ -1,11 +1,11 @@
-require("dotenv").config();
-console.log("Environment Variables:", process.env.PORT, process.env.MONGO_URL);
 const http = require("http");
+require("dotenv").config();
 const app = require("./app");
 const { loadPlanetsData } = require("./models/planets.model");
-const { mongoConnect } = require("./utils/mongo");
+const { mongoConnect } = require("./services/mongo");
+const { loadLaunchDate } = require("./models/launches.model");
 
-const PORT = process.env.PORT ?? 8000;
+const PORT = process.env.PORT ?? 4000;
 const server = http.createServer(app);
 
 app.use("/", (req, res) => {
@@ -22,6 +22,7 @@ const startServer = async () => {
   try {
     await mongoConnect();
     await loadPlanetsData();
+    await loadLaunchDate();
     server.listen(PORT, () => {
       console.log("Server is running on:", PORT);
     });
