@@ -52,8 +52,6 @@ async function populateLaunches() {
       customers,
     };
     console.log(`${launch.flightNumber} is ${launch.mission}`);
-    //TODO: populate launches collection...
-
     await saveLaunch(launch);
   }
 }
