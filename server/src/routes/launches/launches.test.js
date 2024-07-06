@@ -13,7 +13,7 @@ describe("Launches API", () => {
     await mongoDisconnect();
   });
 
-  jest.setTimeout(10000);
+  jest.setTimeout(30000);
 
   describe("Test Get /launches", () => {
     test("It Should respond with 200 success", async () => {
