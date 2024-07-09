@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-WORKDIR /app 
+WORKDIR /app
 
 COPY package*.json ./
 
@@ -17,6 +17,6 @@ COPY server/ server/
 
 USER node
 
-CMD ["npm" , "install" , "--prefix" , "server"]
+CMD [ "npm", "start", "--prefix", "server" ]
 
 EXPOSE 8000

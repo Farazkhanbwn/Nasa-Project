@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "set PORT=3006 && react-scripts start PORT=3006",
-    "build": "cross-env BUILD_PATH=../server/public react-scripts build",
+    "build": "BUILD_PATH=../server/public react-scripts build",
     "test": "jest --passWithNoTests",
     "eject": "react-scripts eject"
   },

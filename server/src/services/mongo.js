@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const MONGO_URL =
-  process.env.MONGO_URL ?? "mongodb://localhost:27017/nasa-project";
+  process.env.MONGO_URL ?? "mongodb://localhost:27017/docker";
 
 mongoose.connection.once("open", () => {
   console.log("MongoDB connection ready");
@@ -17,11 +17,11 @@ async function mongoConnect() {
     throw new Error("auth DB_URI must be defined");
   }
   try {
+    console.log("mongoURL is:", MONGO_URL);
     await mongoose.connect(MONGO_URL);
     console.log("Server connected to MongoDb!");
   } catch (err) {
-    throw new DbConnectionError();
-    // console.error(err);
+    console.error("Error value is : ", err);
   }
   // console.log("mongo Url is : ", MONGO_URL);
   // await mongoose.connect(MONGO_URL);
