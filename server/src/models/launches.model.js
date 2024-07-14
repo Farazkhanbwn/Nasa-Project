@@ -15,7 +15,6 @@ async function populateLaunches() {
       populate: [
         {
           path: "rocket",
-
           select: {
             name: 1,
           },
